@@ -4,3 +4,5 @@
     <strong><%= link_to pet.name, pet_path(pet) %></strong>
   </p>
 <% end %>
+
+<%= link_to "Add pet", new_owner_pet_path(@owner) %>

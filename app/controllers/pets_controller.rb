@@ -11,6 +11,16 @@ class PetsController < ApplicationController
     @pet = Pet.find_by(id: pet_id)
   end
 
+
+  def new
+    @pet = Pet.new
+  end
+
+  def create
+    pet = Pet.create(pet)
+    redirect_to pet_path(pet)
+  end
+
   # TODO: set up *new* method with data for new view
 
   # TODO: set up *create* method with database interactions for create
