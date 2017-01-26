@@ -1,11 +1,12 @@
 class Owner < ActiveRecord::Base
 
   has_many :pets
-  
+
+
   # TODO: add association to appointments (through pets)
 
-  # TODO: add validations
-
+  validates_associated :pets
+  
   before_save :normalize_phone_number
 
 
