@@ -9,9 +9,12 @@
     <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
   </div>
   <div class="form-group">
-    <%= f.telephone_field :phone, class: "form-control", placeholder: "Phone Number" %>
+    <%= f.password_field :password_digest, class: "form-control", placeholder: "Password" %>
   </div>
   <div class="form-group">
-    <%= f.submit "Save Owner", class: "btn btn-block btn-success" %>
+    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation"%><br>
+  </div>
+  <div class="form-group">
+    <%= f.submit "SignUp", class: "btn btn-block btn-success" %>
   </div>
 <% end %>
