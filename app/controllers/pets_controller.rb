@@ -7,8 +7,7 @@ class PetsController < ApplicationController
   end
 
   def show
-    pet_id = params[:id]
-    @pet = Pet.find_by(id: pet_id)
+    @pet = Pet.find(params[:id])
   end
 
 
@@ -17,8 +16,8 @@ class PetsController < ApplicationController
   end
 
   def create
-    pet = Pet.create(pet)
-    redirect_to pet_path(pet)
+    @pet = Pet.create(pet_params)
+    redirect_to owner_pets_path(@pet)
   end
 
   # TODO: set up *new* method with data for new view

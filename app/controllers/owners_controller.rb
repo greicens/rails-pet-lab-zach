@@ -9,13 +9,17 @@ class OwnersController < ApplicationController
   end
 
   def create
-    owner = Owner.create(owner_params)
-    redirect_to owner_path(owner)
+    @owner = Owner.create(owner_params)
+    if @owner.save
+      session[:owner_id] = @owner.id
+      redirect_to '/owners'
+    else
+      redirect_to '/signup'
+    end
   end
 
   def show
-    owner_id = params[:id]
-    @owner = Owner.find_by(id: owner_id)
+    @owner = Owner.find(params[:id])
   end
 
   def edit
@@ -34,7 +38,8 @@ class OwnersController < ApplicationController
 
   private
   def owner_params
-    params.require(:owner).permit(:first_name, :last_name, :email, :phone)
+    p "#{params} params"
+    params.require(:owner).permit(:first_name, :last_name, :email, :password_digest, :password_confirmation)
   end
 
 end
