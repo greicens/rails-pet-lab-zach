@@ -4,9 +4,8 @@ class SessionsController < ApplicationController
   end
   def create
     owner = Owner.find_by_email(owner_params[:email])
-    p "#{owner} , this is owner in SessionsController"
 
-    if owner && owner.authenticate(owner_params[:password_digest])
+    if owner && owner.authenticate(owner_params[:password])
       session[:owner_id] = owner.id
       redirect_to '/'
     else
